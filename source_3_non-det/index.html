@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Source §3 Non-Det</title>
+    <link rel="shortcut icon"
+	  type="image/x-icon"
+	  href="/images/sourcepower.ico" />
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source §3 Non-Det</h1>
+
+    <!-- changed by MH on 1/7/2019 from default template. See "MH" below -->
+<!-- changed by MH on 3/6/2021 from default template. See "MH" below -->
+
+
+
+
+
+
+
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><p>Source §3 Non-Det is a small programming language, designed for the fourth chapter
+of the textbook
+<a href="https://sourceacademy.org/sicpjs">Structure and Interpretation
+of Computer Programs, JavaScript Adaptation</a> (SICP JS).</p>
+<h2>What is nondeterministic programming?</h2>
+<p>Source 3 Non-Det is a version of Source 3 with a built-in search mechanism.
+Programmers can specify sets of values, and requirements that the values must satisfy.
+The program evaluator then automatically identifies the values that meet the requirements.</p>
+<h2>What names are predeclared in Source §3 Non-Det?</h2>
+<p>On the right, you see all predeclared names of Source §3 Non-Det, in alphabetical
+order. Click on a name to see how it is used.</p>
+  <ul>
+    <li>
+      <a href="../MISC/index.html">MISC</a>: Miscellaneous constants and functions
+    </li>
+    <li>
+      <a href="../MATH/index.html">MATH</a>: Mathematical constants and functions
+    </li>
+    <li>
+      <a href="../LISTS/index.html">LISTS</a>: Support for lists
+    </li>
+    <li>
+      <a href="../PAIRMUTATORS/index.html">PAIRMUTATORS</a>: Mutating pairs
+    </li>
+    <li>
+      <a href="../ARRAYS/index.html">ARRAYS</a>: Support for arrays
+    </li>
+    <li>
+      <a href="../STREAMS/index.html">STREAMS</a>: Support for streams
+    </li>
+    <li>
+      <a href="../NON-DET/index.html">NON-DET</a>: Support for nondeterminism
+    </li>
+  </ul>
+<h2>What can you do in Source §3 Non-Det?</h2>
+<p>You can use all features of
+<a href="../source_3/">Source §3</a> and all
+features that are introduced in
+<a href="https://sourceacademy.org/sicpjs/4.3">chapter 4.3</a> of the
+textbook.</p>
+<p>Below are the features that Source §3 Non-Det adds to Source §3.</p>
+<h3>amb operator</h3>
+<p>A set of values can be specified with the <CODE>amb</CODE> operator.</p>
+<p>In the following example, we specify two possible choices for a value we want:<br>
+<CODE>amb('hello', 'bye') + 'world!'; // 'hello world!'</CODE></p>
+<p>To obtain the next value, <CODE>'bye'</CODE>, enter the command <CODE>try_again</CODE> in the playground REPL.
+This will give the result <CODE>'bye world!'</CODE>.</p>
+<h3>ambR operator</h3>
+<p>The <CODE>ambR</Code> operator functions similarly to <CODE>amb</Code> but makes choices randomly
+instead of sequentially.</p>
+<p>Upon running the above example, we may randomly obtain the result <CODE>'hello world!'</CODE> first and <CODE>'bye world!</CODE> second<br>
+or <CODE>'bye world!</CODE> first and <CODE>'hello world!'</CODE> second.</p>
+<h3>require function</h3>
+<p>Requirements can be specified with the <CODE>require</code> function.</p>
+<p>In the following example, we add the requirement that the number chosen should be greater than 3:<br/>
+<CODE>const f = amb(1, 2, 3, 4, 5, 6); require(f &gt; 3); f; // 4</CODE></p>
+<p>To obtain the next value <CODE>5</CODE>, enter the command <CODE>try_again</CODE> in the playground REPL.<br>
+Entering <CODE>try_again</CODE> once more will give the final value of <CODE>6</CODE>.</p>
+<h3>cut operator</h3>
+<p>In order to obtain only the first possible value which satisfies given requirements,<br>
+the <CODE>cut</CODE> operator can be used to prevent backtracking beyond the current statement.</p>
+<p>In the following example, we are able to obtain only a single value:<br>
+<CODE>const f = amb(1, 2, 3, 4, 5, 6); require(f &gt; 3); cut(); f; // 4</CODE></p>
+<p>Entering <CODE>try_again</CODE> in the playground REPL will not give the subsequent values that were specified,
+<CODE>5</CODE> and <CODE>6</CODE>.</p>
+<h3>implication function</h3>
+<p>The <CODE>implication</CODE> function can be used to model logical implication between two boolean expressions.</p>
+<h3>bi_implication function</h3>
+<p>The <CODE>bi_implication</CODE> function can be used to model logical bi-implication between two boolean expressions.</p>
+<h3>an_element_of function</h3>
+<p>The <CODE>an_element_of</CODE> function can be used to nondeterministically obtain an element from a list.<br>
+It functions similarly to <CODE>amb</CODE> but takes in a list of choices as argument instead of the choices being arguments themselves.</p>
+<h3>an_integer_between function</h3>
+<p>The <CODE>an_integer_between</CODE> function can be used to nondeterministically obtain an integer between a specified range (inclusively).</p>
+<h2>You want the definitive specs?</h2>
+<p>For our development team, we are maintaining a definitive description
+of the language, called the
+<a href="../source_3_nondet.pdf">Specification of Source §3 Non-Det</a>.
+Feel free to take a peek!</p></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<nav>
+    <h3>Predeclared names</h3><ul><li><a href="global.html#accumulate">accumulate</a></li><li><a href="global.html#amb">amb</a></li><li><a href="global.html#ambR">ambR</a></li><li><a href="global.html#an_element_of">an_element_of</a></li><li><a href="global.html#an_integer_between">an_integer_between</a></li><li><a href="global.html#append">append</a></li><li><a href="global.html#array_length">array_length</a></li><li><a href="global.html#bi_implication">bi_implication</a></li><li><a href="global.html#build_list">build_list</a></li><li><a href="global.html#build_stream">build_stream</a></li><li><a href="global.html#char_at">char_at</a></li><li><a href="global.html#cut">cut</a></li><li><a href="global.html#display">display</a></li><li><a href="global.html#display_list">display_list</a></li><li><a href="global.html#draw_data">draw_data</a></li><li><a href="global.html#enum_list">enum_list</a></li><li><a href="global.html#enum_stream">enum_stream</a></li><li><a href="global.html#equal">equal</a></li><li><a href="global.html#error">error</a></li><li><a href="global.html#eval_stream">eval_stream</a></li><li><a href="global.html#filter">filter</a></li><li><a href="global.html#for_each">for_each</a></li><li><a href="global.html#get_time">get_time</a></li><li><a href="global.html#head">head</a></li><li><a href="global.html#implication">implication</a></li><li><a href="global.html#Infinity">Infinity</a></li><li><a href="global.html#integers_from">integers_from</a></li><li><a href="global.html#is_array">is_array</a></li><li><a href="global.html#is_boolean">is_boolean</a></li><li><a href="global.html#is_function">is_function</a></li><li><a href="global.html#is_list">is_list</a></li><li><a href="global.html#is_null">is_null</a></li><li><a href="global.html#is_number">is_number</a></li><li><a href="global.html#is_pair">is_pair</a></li><li><a href="global.html#is_stream">is_stream</a></li><li><a href="global.html#is_string">is_string</a></li><li><a href="global.html#is_undefined">is_undefined</a></li><li><a href="global.html#length">length</a></li><li><a href="global.html#list">list</a></li><li><a href="global.html#list_ref">list_ref</a></li><li><a href="global.html#list_to_stream">list_to_stream</a></li><li><a href="global.html#list_to_string">list_to_string</a></li><li><a href="global.html#map">map</a></li><li><a href="global.html#math_abs">math_abs</a></li><li><a href="global.html#math_acos">math_acos</a></li><li><a href="global.html#math_acosh">math_acosh</a></li><li><a href="global.html#math_asin">math_asin</a></li><li><a href="global.html#math_asinh">math_asinh</a></li><li><a href="global.html#math_atan">math_atan</a></li><li><a href="global.html#math_atan2">math_atan2</a></li><li><a href="global.html#math_atanh">math_atanh</a></li><li><a href="global.html#math_cbrt">math_cbrt</a></li><li><a href="global.html#math_ceil">math_ceil</a></li><li><a href="global.html#math_clz32">math_clz32</a></li><li><a href="global.html#math_cos">math_cos</a></li><li><a href="global.html#math_cosh">math_cosh</a></li><li><a href="global.html#math_E">math_E</a></li><li><a href="global.html#math_exp">math_exp</a></li><li><a href="global.html#math_expm1">math_expm1</a></li><li><a href="global.html#math_floor">math_floor</a></li><li><a href="global.html#math_fround">math_fround</a></li><li><a href="global.html#math_hypot">math_hypot</a></li><li><a href="global.html#math_imul">math_imul</a></li><li><a href="global.html#math_LN2">math_LN2</a></li><li><a href="global.html#math_LN10">math_LN10</a></li><li><a href="global.html#math_log">math_log</a></li><li><a href="global.html#math_log1p">math_log1p</a></li><li><a href="global.html#math_log2">math_log2</a></li><li><a href="global.html#math_LOG2E">math_LOG2E</a></li><li><a href="global.html#math_log10">math_log10</a></li><li><a href="global.html#math_LOG10E">math_LOG10E</a></li><li><a href="global.html#math_max">math_max</a></li><li><a href="global.html#math_min">math_min</a></li><li><a href="global.html#math_PI">math_PI</a></li><li><a href="global.html#math_pow">math_pow</a></li><li><a href="global.html#math_random">math_random</a></li><li><a href="global.html#math_round">math_round</a></li><li><a href="global.html#math_sign">math_sign</a></li><li><a href="global.html#math_sin">math_sin</a></li><li><a href="global.html#math_sinh">math_sinh</a></li><li><a href="global.html#math_sqrt">math_sqrt</a></li><li><a href="global.html#math_SQRT1_2">math_SQRT1_2</a></li><li><a href="global.html#math_SQRT2">math_SQRT2</a></li><li><a href="global.html#math_tan">math_tan</a></li><li><a href="global.html#math_tanh">math_tanh</a></li><li><a href="global.html#math_trunc">math_trunc</a></li><li><a href="global.html#member">member</a></li><li><a href="global.html#NaN">NaN</a></li><li><a href="global.html#pair">pair</a></li><li><a href="global.html#parse_int">parse_int</a></li><li><a href="global.html#prompt">prompt</a></li><li><a href="global.html#remove">remove</a></li><li><a href="global.html#remove_all">remove_all</a></li><li><a href="global.html#require">require</a></li><li><a href="global.html#reverse">reverse</a></li><li><a href="global.html#set_head">set_head</a></li><li><a href="global.html#set_tail">set_tail</a></li><li><a href="global.html#stream">stream</a></li><li><a href="global.html#stream_append">stream_append</a></li><li><a href="global.html#stream_filter">stream_filter</a></li><li><a href="global.html#stream_for_each">stream_for_each</a></li><li><a href="global.html#stream_length">stream_length</a></li><li><a href="global.html#stream_map">stream_map</a></li><li><a href="global.html#stream_member">stream_member</a></li><li><a href="global.html#stream_ref">stream_ref</a></li><li><a href="global.html#stream_remove">stream_remove</a></li><li><a href="global.html#stream_remove_all">stream_remove_all</a></li><li><a href="global.html#stream_reverse">stream_reverse</a></li><li><a href="global.html#stream_tail">stream_tail</a></li><li><a href="global.html#stream_to_list">stream_to_list</a></li><li><a href="global.html#stringify">stringify</a></li><li><a href="global.html#tail">tail</a></li><li><a href="global.html#undefined">undefined</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+  generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> from
+  <a href="https://github.com/source-academy/js-slang">Github repository js-slang</a>
+  on Wed Jul 14 2021 00:11:25 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
